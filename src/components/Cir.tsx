@@ -42,8 +42,8 @@ function Model(props: JSX.IntrinsicElements["group"]) {
 
     materials["Beu Metal.001"].transparent = true;
     materials["Beu Metal"].transparent = true;
-    materials["Beu Metal.001"].opacity = 0.55;
-    materials["Beu Metal"].opacity = 0.55;
+    materials["Beu Metal.001"].opacity = 0.8;
+    materials["Beu Metal"].opacity = 0.8;
   }, [materials]);
 
   useFrame((_, delta) => {

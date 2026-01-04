@@ -6,12 +6,12 @@
     --font-plus: "PlusJakartaSans", sans-serif;
     --font-grand: "GrandHotel", serif;
 
-    --color-primary: #ff8ae2;
+    --color-primary: #ff69b4;
     --color-accent: #8acbff;
 
-    --color-text: #1c1c1e;
+    --color-text: #fffafa;
     --color-text-1: #7e7e86;
-    --color-bg: #fafafa;
+    --color-bg: #1a1a1e;
 
     --font-size: 1rem;
 }
@@ -25,6 +25,20 @@ html {
 }
 body {
     overflow-x: hidden;
+}
+
+.blob-spin {
+    transform-origin: 50% 40%;
+    /*animation: spin 6s linear infinite;*/
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /*Font Sizes*/

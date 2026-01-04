@@ -1,8 +1,8 @@
 const Nav = () => {
   return (
     <>
-      <nav className="flex justify-between absolute w-full pr-[1rem] py-5 px-5 items-center font-plus z-3 xl:px-6">
-        <div className=" font-bold font-plus text-[1.5rem] bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      <nav className="z-100 absolute flex w-screen justify-between pr-[1rem] py-5 px-5 items-center font-plus xl:px-6">
+        <div className=" w-fit font-bold font-plus text-[1.5rem] bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           <a href="#">DesignAI</a>
         </div>
 
@@ -13,7 +13,7 @@ const Nav = () => {
           >
             Log In
           </a>
-          <button className="bg-primary px-4 py-2 rounded-full hover:bg-accent active:bg-text-1 transition-colors duration-330 text-bg">
+          <button className="bg-primary px-4 py-2 rounded-xl hover:bg-accent active:bg-text-1 transition-colors duration-330 text-text">
             Get Started
           </button>
         </div>

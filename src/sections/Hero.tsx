@@ -1,12 +1,13 @@
 import Title from "../components/Title";
-import { lazy } from "react";
-const Renderer = lazy(() => import("./Renderer"));
+import Visual from "../components/Visual";
+import Nav from "../components/Nav";
 
 const Hero = () => {
   return (
-    <div className="h-screen relative w-full ">
+    <div className="h-screen relative w-full">
+      <Nav />
       <Title />
-      <Renderer />
+      <Visual />
     </div>
   );
 };

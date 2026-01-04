@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="relative  bg-text text-bg overflow-hidden mt-20">
+    <div className="relative  bg-bg text-text overflow-hidden mt-20">
       <div className="absolute w-150 h-150 -top-60 -right-10 rotate-z-35 border-100 rounded-2xl border-solid border-primary/30 z-0" />
 
       <footer className=" relative z-10 ">
