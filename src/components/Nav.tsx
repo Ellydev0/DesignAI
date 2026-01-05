@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const Nav = () => {
   return (
     <>
@@ -6,16 +8,10 @@ const Nav = () => {
           <a href="#">DesignAI</a>
         </div>
 
-        <div className="flex justify-between items-center xl:w-50 xl:pr-4">
-          <a
-            href="#"
-            className="text-primary hover:text-accent transition-colors duration-330 font-[500] hidden xl:block"
-          >
-            Log In
+        <div className="flex justify-between items-center gap-6 xl:pr-4">
+          <a href="#waitlist">
+            <Button text="Join the waitlist" />
           </a>
-          <button className="bg-primary px-4 py-2 rounded-xl hover:bg-accent active:bg-text-1 transition-colors duration-330 text-text">
-            Get Started
-          </button>
         </div>
       </nav>
     </>

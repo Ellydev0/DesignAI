@@ -35,8 +35,6 @@ const TeamFeature = () => {
             <FaUser className="text-[6rem]" />
           </div>
         </div>
-
-        <ImSpinner11 className="text-2xl -translate-x-3 text-primary" />
       </div>
     </div>
   );

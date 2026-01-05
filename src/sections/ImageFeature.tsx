@@ -1,30 +1,64 @@
-import { useEffect } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const images = [
-  { src: "/img/e.avif", className: "top-1/3 right-24" },
-  { src: "/img/c.avif", className: "bottom-24 left-32" },
-  { src: "/img/b.avif", className: "top-20 right-1/3" },
-  { src: "/img/d.avif", className: "bottom-10 left-96" },
-];
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 
 const ImageFeature = () => {
-  // Preload images BEFORE scroll interaction
-  useEffect(() => {
-    images.forEach(({ src }) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
+  interface imagesTypes {
+    src: string;
+    className: string;
+    speed: number;
+  }
+
+  const images: imagesTypes[] = [
+    { src: "/img/e.avif", className: "top-1/3 right-24", speed: -45 },
+    { src: "/img/c.avif", className: "bottom-24 left-32", speed: -35 },
+    { src: "/img/b.avif", className: "top-20 right-1/3", speed: -65 },
+    { src: "/img/d.avif", className: "bottom-10 left-96", speed: -40 },
+    { src: "/img/b.avif", className: "top-10 left-10", speed: -50 },
+    { src: "/img/d.avif", className: "bottom-1/3 right-32", speed: -30 },
+    { src: "/img/c.avif", className: "top-1/4 left-1/3", speed: -55 },
+    { src: "/img/e.avif", className: "bottom-20 right-1/4", speed: -42 },
+  ];
+
+  const container = useRef(null);
+
+  useGSAP(
+    () => {
+      if (!container.current) return;
+
+      const imageElements = gsap.utils.toArray(".parallax-image");
+      imageElements.forEach((img: any) => {
+        gsap.to(img, {
+          yPercent: img.dataset.speed,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+    },
+    { scope: container },
+  );
 
   return (
-    <section className="relative overflow-hidden py-28 mt-40">
+    <section ref={container} className="relative overflow-hidden py-50 mt-20">
       {/* Background visual layer */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10">
         {images.map((img, i) => (
-          <div
+          <img
             key={i}
-            className={`absolute h-40 w-40 rounded-xl bg-cover bg-center opacity-65 ${img.className}`}
-            style={{ backgroundImage: `url(${img.src})` }}
+            src={img.src}
+            alt=""
+            decoding="async"
+            data-speed={img.speed}
+            className={`parallax-image absolute h-40 w-40 rounded-xl bg-neutral-800 object-cover object-center opacity-65 ${img.className}`}
           />
         ))}
       </div>

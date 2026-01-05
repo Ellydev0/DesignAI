@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const Title = () => {
   return (
     <div className="flex items-center flex-col h-full justify-center relative z-10">
@@ -13,12 +15,13 @@ const Title = () => {
         </p>
 
         <div className="flex justify-center items-center gap-8 mt-8">
-          <button className="bg-primary px-5 py-3 rounded-xl hover:bg-accent active:bg-text-1 transition-colors duration-330 text-text">
-            Get Started
-          </button>
-          <button className="border border-primary px-5 py-3 rounded-xl hover:border-accent hover:bg-accent active:bg-text-1 transition-colors duration-330 text-text">
-            Learn More
-          </button>
+          <a href="#waitlist">
+            <Button text="Join the waitlist" />
+          </a>
+          <Button
+            text="Learn More"
+            className="border border-primary bg-transparent hover:border-accent"
+          />
         </div>
       </div>
     </div>

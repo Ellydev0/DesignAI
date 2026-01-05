@@ -11,20 +11,18 @@
 
     --color-text: #fffafa;
     --color-text-1: #7e7e86;
-    --color-bg: #1a1a1e;
+    --color-bg: #090909;
 
     --font-size: 1rem;
 }
 
-html {
+body {
     background-color: var(--color-bg);
     font-family: var(--font-inter);
     font-size: var(--font-size);
     color: var(--color-text);
     overflow-x: hidden;
-}
-body {
-    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .blob-spin {
