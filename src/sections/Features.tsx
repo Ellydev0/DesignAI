@@ -5,7 +5,7 @@ import ImageFeature from "./ImageFeature";
 
 const Feature = () => {
   return (
-    <div className="px-6 mt-24">
+    <div className="px-6 mt-0 xl:mt-24">
       <ChatFeature />
       <TeamFeature />
       <CritiqueFeature />

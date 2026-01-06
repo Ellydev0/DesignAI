@@ -39,7 +39,7 @@ const ChatFeature = () => {
 
   return (
     <div ref={container}>
-      <div className="mb-20">
+      <div className="mb-10 xl:mb-20">
         <div className="text-[1.5rem] xl:text-[2.5rem] font-plus font-bold mb-3">
           <SplitTitle text={title} selector="chat" /> <br />
           <SplitTitle text={titleCont} selector="chat" />
