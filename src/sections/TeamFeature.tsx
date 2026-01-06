@@ -19,7 +19,7 @@ const TeamFeature = () => {
     },
     {
       opacity: 0,
-      y: 10,
+      y: 3,
     },
   );
 
@@ -37,12 +37,15 @@ const TeamFeature = () => {
     },
   );
   return (
-    <div ref={container} className="flex justify-between items-center mt-40">
+    <div
+      ref={container}
+      className="flex flex-col justify-between items-center mt-40 xl:flex-row"
+    >
       <div>
-        <div className="text-[2.5rem] font-plus font-bold w-[90%] mb-3">
+        <div className="text-[1.6rem] xl:text-[2.5rem] font-plus font-bold w-[90%] mb-3">
           <SplitTitle text={text} selector="share" />
         </div>
-        <p className="text-[.9rem] font-[100] text-text/70 w-[60%] text opacity-0">
+        <p className="text-[.9rem] font-[100] text-text/70 xl:w-[60%] text opacity-0 w-full">
           Collaborate in persistent workspaces that keep designs, comments, and
           AI feedback attached to the right screens and versions. Assign
           reviewers, surface action items, annotate changes, and maintain a
@@ -51,7 +54,7 @@ const TeamFeature = () => {
         </p>
       </div>
 
-      <div className="flex gap-3 w-fit">
+      <div className="flex gap-3 w-fit mt-18 xl:mt-0">
         <div className="flex flex-col gap-3">
           <div className="w-fit bg-primary/20 border border-primary rounded-xl p-4">
             <FaUser className="text-[6rem]" />

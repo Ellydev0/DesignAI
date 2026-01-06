@@ -25,17 +25,20 @@ body {
     scroll-behavior: smooth;
 }
 
-.blob-spin {
-    transform-origin: 50% 40%;
-    /*animation: spin 6s linear infinite;*/
+.move {
+    animation: move 1.5s ease-in-out infinite;
+}
+.close {
+    transform: translateY(-100%);
+    /*opacity: 0;*/
 }
 
-@keyframes spin {
+@keyframes move {
     0% {
-        transform: rotate(0deg);
+        transform: translateX(-100%);
     }
     100% {
-        transform: rotate(360deg);
+        transform: translateX(200%);
     }
 }
 

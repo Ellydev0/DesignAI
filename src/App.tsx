@@ -6,11 +6,11 @@ import Footer from "./sections/Footer";
 import Waitlist from "./sections/Waitlist";
 import gsap from "gsap";
 import { ReactLenis } from "lenis/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Suspense } from "react";
+import Loading from "./Loading";
 
 function App() {
   const lenisRef = useRef(null!);
-
   useEffect(() => {
     function update(time: number) {
       if (!lenisRef.current.lenis) return;
@@ -24,12 +24,15 @@ function App() {
   return (
     <>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-      <div>
-        <Hero />
-        <Features />
-        <Waitlist />
-        <Footer />
-      </div>
+      <Loading />
+      <Suspense fallback={<Loading />}>
+        <div>
+          <Hero />
+          <Features />
+          <Waitlist />
+          <Footer />
+        </div>
+      </Suspense>
     </>
   );
 }

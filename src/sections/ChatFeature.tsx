@@ -19,7 +19,7 @@ const ChatFeature = () => {
     },
     {
       opacity: 0,
-      y: 10,
+      y: 3,
     },
   );
 
@@ -40,11 +40,11 @@ const ChatFeature = () => {
   return (
     <div ref={container}>
       <div className="mb-20">
-        <div className="text-[2.5rem] font-plus font-bold mb-3">
+        <div className="text-[1.5rem] xl:text-[2.5rem] font-plus font-bold mb-3">
           <SplitTitle text={title} selector="chat" /> <br />
           <SplitTitle text={titleCont} selector="chat" />
         </div>
-        <p className="text-[.9rem] font-[100] text-text/70 w-[50%] text opacity-0">
+        <p className="text-[.9rem] font-[100] text-text/70 w-full xl:w-[50%] text opacity-0">
           Engage in natural, design-focused conversations with an AI that
           understands your project's visual language, user goals, and
           constraints. It provides clear, structured feedback on layout,

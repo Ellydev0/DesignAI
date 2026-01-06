@@ -88,14 +88,15 @@ const Waitlist = () => {
         </p>
         <form
           onSubmit={handleSubmit}
-          className="flex gap-3 justify-center items-center mx-auto form"
+          className=" flex gap-3 justify-center items-center xl:mx-auto form flex-col xl:flex-row"
         >
           <input
             type="email"
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-md px-5 py-3 rounded-lg border-2 border-neutral-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-magenta-500 text-white"
+            className="w-full px-5 py-3 rounded-lg border-2 border-neutral-700 bg-transparent
+            focus:outline-none focus:ring-2 focus:ring-magenta-500 text-white xl:w-md"
             required
           />
           <Button text="Join Waitlist" className="w-fit" />

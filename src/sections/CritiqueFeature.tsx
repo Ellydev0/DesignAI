@@ -19,7 +19,7 @@ const CritiqueFeature = () => {
     },
     {
       opacity: 0,
-      y: 10,
+      y: 3,
     },
   );
 
@@ -39,10 +39,10 @@ const CritiqueFeature = () => {
   return (
     <div className="flex flex-col mt-40" ref={container}>
       <div className="mb-10">
-        <div className="text-[2.5rem] font-plus font-bold w-[70%] mb-3">
+        <div className="text-[1.7rem] xl:text-[2.5rem] font-plus font-bold w-[70%] mb-3 ">
           <SplitTitle text={text} selector="critique" />
         </div>
-        <p className="text-[.9rem] font-[100] text-text/70 w-[60%] text opacity-0">
+        <p className="text-[.9rem] font-[100] text-text/70 w-full xl:w-[60%] text opacity-0">
           Receive immediate, structured critique that pinpoints hierarchy,
           spacing, color, contrast, accessibility, copy, and overall layout.
           Each point includes clear rationale, a priority level, and actionable

@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-// import SplitTitle from "../components/SplitTitle";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState, useEffect, useMemo } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -15,20 +15,50 @@ const ImageFeature = () => {
     speed: number;
   }
 
-  // const text = "Create assets, not placeholders.";
+  const [images, setImages] = useState<imagesTypes[]>();
+  const imagesDesktop: imagesTypes[] = useMemo(
+    () => [
+      { src: "/img/e.avif", className: "top-1/3 right-24", speed: -45 },
+      { src: "/img/c.avif", className: "bottom-24 left-32", speed: -35 },
+      { src: "/img/b.avif", className: "top-20 right-1/3", speed: -65 },
+      { src: "/img/d.avif", className: "bottom-10 left-96", speed: -40 },
+      { src: "/img/b.avif", className: "top-10 left-10", speed: -50 },
+      { src: "/img/d.avif", className: "bottom-1/3 right-32", speed: -30 },
+      { src: "/img/c.avif", className: "top-1/4 left-1/3", speed: -55 },
+      { src: "/img/e.avif", className: "bottom-20 right-1/4", speed: -42 },
+    ],
+    [],
+  );
 
-  const images: imagesTypes[] = [
-    { src: "/img/e.avif", className: "top-1/3 right-24", speed: -45 },
-    { src: "/img/c.avif", className: "bottom-24 left-32", speed: -35 },
-    { src: "/img/b.avif", className: "top-20 right-1/3", speed: -65 },
-    { src: "/img/d.avif", className: "bottom-10 left-96", speed: -40 },
-    { src: "/img/b.avif", className: "top-10 left-10", speed: -50 },
-    { src: "/img/d.avif", className: "bottom-1/3 right-32", speed: -30 },
-    { src: "/img/c.avif", className: "top-1/4 left-1/3", speed: -55 },
-    { src: "/img/e.avif", className: "bottom-20 right-1/4", speed: -42 },
-  ];
+  const imagesMobile: imagesTypes[] = useMemo(
+    () => [
+      { src: "/img/e.avif", className: "top-1/3 -right-24", speed: -45 },
+      { src: "/img/c.avif", className: "bottom-24 -left-32", speed: -35 },
+      { src: "/img/b.avif", className: "top-20 -right-1/3", speed: -65 },
+      { src: "/img/d.avif", className: "bottom-10 -left-96", speed: -40 },
+      { src: "/img/b.avif", className: "top-10 -left-10", speed: -50 },
+      { src: "/img/d.avif", className: "bottom-1/3 -right-32", speed: -30 },
+      { src: "/img/c.avif", className: "top-1/4 -left-1/3", speed: -55 },
+      { src: "/img/e.avif", className: "bottom-20 -right-1/4", speed: -42 },
+    ],
+    [],
+  );
 
   const container = useRef(null!);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768;
+      setImages(isMobile ? imagesMobile : imagesDesktop);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [imagesMobile, imagesDesktop]);
 
   useGSAP(
     () => {
@@ -82,10 +112,10 @@ const ImageFeature = () => {
   );
 
   return (
-    <section ref={container} className="relative overflow-hidden py-50 mt-20">
+    <section ref={container} className="relative overflow-visible py-50 mt-20">
       {/* Background visual layer */}
       <div className="absolute inset-0 -z-10">
-        {images.map((img, i) => (
+        {images?.map((img, i) => (
           <img
             key={i}
             src={img.src}
