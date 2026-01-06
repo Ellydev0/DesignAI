@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import Features from "./sections/Features";
 import Hero from "./sections/Hero";
 import Footer from "./sections/Footer";

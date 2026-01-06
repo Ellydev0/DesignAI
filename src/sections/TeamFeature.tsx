@@ -1,14 +1,48 @@
 import { FaUser } from "react-icons/fa";
-import { ImSpinner11 } from "react-icons/im";
+import useScrollAnimation from "../hooks/useScrollAnimation";
+import { useRef } from "react";
+import SplitTitle from "../components/SplitTitle";
 
 const TeamFeature = () => {
+  const container = useRef(null!);
+  const text = "Shared workspaces, not scattered files.";
+
+  useScrollAnimation(
+    container,
+    ".share",
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.2,
+      ease: "power2.out",
+      stagger: 0.04,
+    },
+    {
+      opacity: 0,
+      y: 10,
+    },
+  );
+
+  useScrollAnimation(
+    container,
+    ".text",
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+    },
+    {
+      opacity: 0,
+      y: 30,
+    },
+  );
   return (
-    <div className="flex justify-between items-center mt-40">
+    <div ref={container} className="flex justify-between items-center mt-40">
       <div>
-        <h1 className="text-[2.5rem] font-plus font-bold w-[90%] mb-3">
-          Shared workspaces, not scattered files.
-        </h1>
-        <p className="text-[.9rem] font-[100] text-text/70 w-[60%]">
+        <div className="text-[2.5rem] font-plus font-bold w-[90%] mb-3">
+          <SplitTitle text={text} selector="share" />
+        </div>
+        <p className="text-[.9rem] font-[100] text-text/70 w-[60%] text opacity-0">
           Collaborate in persistent workspaces that keep designs, comments, and
           AI feedback attached to the right screens and versions. Assign
           reviewers, surface action items, annotate changes, and maintain a

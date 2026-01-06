@@ -8,28 +8,36 @@ gsap.registerPlugin(ScrollTrigger);
 const useScrollAnimation = (
   container: React.RefObject<HTMLElement>,
   element: string,
-  animation: gsap.TweenVars,
+  animationTo: gsap.TweenVars,
+  animationFrom?: gsap.TweenVars,
 ) => {
   // Memoize to prevent unnecessary re-runs
-  const animationKey = useMemo(() => JSON.stringify(animation), [animation]);
+  const animationKey = useMemo(
+    () => JSON.stringify(animationTo),
+    [animationTo],
+  );
 
   useGSAP(
     () => {
       if (!container.current || !element) return;
 
-      gsap.to(element, {
-        scrollTrigger: {
-          trigger: element,
-          start: "-40% center",
-          end: "bottom center",
-          once: true,
+      gsap.fromTo(
+        element,
+        { ...animationFrom },
+        {
+          scrollTrigger: {
+            trigger: element,
+            start: "-40% center",
+            end: "bottom center",
+            once: true,
+          },
+          ...animationTo,
         },
-        ...animation,
-      });
+      );
     },
     {
       scope: container,
-      dependencies: [element, animationKey], // Re-run when these change
+      dependencies: [animationKey],
     },
   );
 };

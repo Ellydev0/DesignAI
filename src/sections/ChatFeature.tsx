@@ -1,13 +1,50 @@
 import ChatPreview from "../components/ChatPreview";
+import SplitTitle from "../components/SplitTitle";
+import { useRef } from "react";
+import useScrollAnimation from "../hooks/useScrollAnimation";
 
 const ChatFeature = () => {
+  const container = useRef(null!);
+  const title = "Design conversations, not";
+  const titleCont = "aimless prompts.";
+  useScrollAnimation(
+    container,
+    ".chat",
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.2,
+      ease: "power2.out",
+      stagger: 0.04,
+    },
+    {
+      opacity: 0,
+      y: 10,
+    },
+  );
+
+  useScrollAnimation(
+    container,
+    ".text",
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+    },
+    {
+      opacity: 0,
+      y: 30,
+    },
+  );
+
   return (
-    <div>
+    <div ref={container}>
       <div className="mb-20">
-        <h1 className="text-[2.5rem] font-plus font-bold w-[70%] mb-3">
-          Design conversations, not aimless prompts.
-        </h1>
-        <p className="text-[.9rem] font-[100] text-text/70 w-[50%]">
+        <div className="text-[2.5rem] font-plus font-bold mb-3">
+          <SplitTitle text={title} selector="chat" /> <br />
+          <SplitTitle text={titleCont} selector="chat" />
+        </div>
+        <p className="text-[.9rem] font-[100] text-text/70 w-[50%] text opacity-0">
           Engage in natural, design-focused conversations with an AI that
           understands your project's visual language, user goals, and
           constraints. It provides clear, structured feedback on layout,

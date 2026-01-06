@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+// import SplitTitle from "../components/SplitTitle";
+import useScrollAnimation from "../hooks/useScrollAnimation";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +15,8 @@ const ImageFeature = () => {
     speed: number;
   }
 
+  // const text = "Create assets, not placeholders.";
+
   const images: imagesTypes[] = [
     { src: "/img/e.avif", className: "top-1/3 right-24", speed: -45 },
     { src: "/img/c.avif", className: "bottom-24 left-32", speed: -35 },
@@ -24,7 +28,7 @@ const ImageFeature = () => {
     { src: "/img/e.avif", className: "bottom-20 right-1/4", speed: -42 },
   ];
 
-  const container = useRef(null);
+  const container = useRef(null!);
 
   useGSAP(
     () => {
@@ -47,6 +51,36 @@ const ImageFeature = () => {
     { scope: container },
   );
 
+  useScrollAnimation(
+    container,
+    ".txt",
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.2,
+      ease: "power2.out",
+      stagger: 0.04,
+    },
+    {
+      opacity: 0,
+      y: 10,
+    },
+  );
+
+  useScrollAnimation(
+    container,
+    ".text",
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+    },
+    {
+      opacity: 0,
+      y: 30,
+    },
+  );
+
   return (
     <section ref={container} className="relative overflow-hidden py-50 mt-20">
       {/* Background visual layer */}
@@ -65,10 +99,10 @@ const ImageFeature = () => {
 
       {/* Centered content */}
       <div className="relative mx-auto text-center">
-        <h2 className="mb-3 text-[2.5rem] font-plus font-bold">
+        <div className="mb-3 text-[2.5rem] font-plus font-bold text">
           Create assets, not placeholders.
-        </h2>
-        <p className="mx-auto w-[80%] text-[0.9rem] font-light text-text/80">
+        </div>
+        <p className="mx-auto w-[80%] text-[0.9rem] font-light text-text/80 opacity-0 text">
           Generate polished images, illustrations, and UI assets on demand — in
           multiple sizes and formats, styled to match your brand. Export ready
           visuals with suggested alt text, cropping, and spacing so they drop
