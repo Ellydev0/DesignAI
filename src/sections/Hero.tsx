@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 
 const Hero = () => {
   return (
-    <div className="h-screen relative w-full">
+    <div className="h-screen relative w-screen">
       <Nav />
       <Title />
       <Visual />

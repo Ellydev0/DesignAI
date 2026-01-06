@@ -62,7 +62,7 @@ const ImageFeature = () => {
 
   useGSAP(
     () => {
-      if (!container.current) return;
+      if (!container.current || !images?.length) return;
 
       const imageElements = gsap.utils.toArray(".parallax-image");
       imageElements.forEach((img: any) => {
@@ -78,7 +78,7 @@ const ImageFeature = () => {
         });
       });
     },
-    { scope: container },
+    { scope: container, dependencies: [images] },
   );
 
   useScrollAnimation(
@@ -116,14 +116,17 @@ const ImageFeature = () => {
       {/* Background visual layer */}
       <div className="absolute inset-0 -z-10">
         {images?.map((img, i) => (
-          <img
-            key={i}
-            src={img.src}
-            alt=""
-            decoding="async"
-            data-speed={img.speed}
-            className={`parallax-image absolute h-40 w-40 rounded-xl bg-neutral-800 object-cover object-center opacity-65 ${img.className}`}
-          />
+          <picture key={i}>
+            <source type="image/avif" srcSet={img.src} />
+            <img
+              src={img.src}
+              alt=""
+              decoding="async"
+              loading="lazy"
+              data-speed={img.speed}
+              className={`parallax-image absolute h-40 w-40 rounded-xl bg-neutral-800 object-cover object-center opacity-65 ${img.className} will-change-transform`}
+            />
+          </picture>
         ))}
       </div>
 

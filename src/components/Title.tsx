@@ -40,7 +40,7 @@ const Title = () => {
   });
 
   return (
-    <div className="flex items-center flex-col h-full justify-center relative z-10">
+    <div className="flex items-center flex-col h-[100dvh] xl:h-screen justify-center relative z-10">
       <div className="text-center">
         <div className="text-[3.2rem] mb-0 xl:text-[5rem] font-extrabold font-plus">
           <div>

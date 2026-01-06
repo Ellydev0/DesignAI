@@ -6,7 +6,7 @@ import Footer from "./sections/Footer";
 import Waitlist from "./sections/Waitlist";
 import gsap from "gsap";
 import { ReactLenis } from "lenis/react";
-import { useEffect, useRef, Suspense } from "react";
+import { useEffect, useRef } from "react";
 import Loading from "./Loading";
 
 function App() {
@@ -25,14 +25,12 @@ function App() {
     <>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
       <Loading />
-      <Suspense fallback={<Loading />}>
-        <div>
-          <Hero />
-          <Features />
-          <Waitlist />
-          <Footer />
-        </div>
-      </Suspense>
+      <div className="overflow-x-hidden">
+        <Hero />
+        <Features />
+        <Waitlist />
+        <Footer />
+      </div>
     </>
   );
 }
